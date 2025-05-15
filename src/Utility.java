@@ -17,8 +17,7 @@ public interface Utility
 {
     static String[] isInputString =
     {
-        "",
-        "\n Your Choice: "
+        "\nYour Choice: "
     };
 
     /**
