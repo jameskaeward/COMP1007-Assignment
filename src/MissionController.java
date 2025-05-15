@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 import Errors.InvalidIdentifierError;
 
 /**
@@ -9,7 +11,7 @@ import Errors.InvalidIdentifierError;
  * <p>
  * REQUIRES:    None.
  * <p>
- * Last Mod:    14th April 2025
+ * Last Mod:    15th May 2025
  * <p>
  * @author      Rungpipol Kaew-ard
  */
@@ -60,7 +62,16 @@ public class MissionController
 
     public void showCurrentMenu()
     {
-        Utility.printLines(this.currentMenuArray);
+        // Print the menu
+        Utility.printLines(this.currentMenuArray, true);
+
+        // Get the input
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.next();
+        scanner.close();
+
+        // We have the input, now we verify it
+
     }
 }
 

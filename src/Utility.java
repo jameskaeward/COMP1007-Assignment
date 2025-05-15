@@ -9,24 +9,43 @@
  * <p>
  * REQUIRES:    None.
  * <p>
- * Last Mod:    15th April 2025
+ * Last Mod:    15th May 2025
  * <p>
  * @author      Rungpipol Kaew-ard
  */
 public interface Utility
 {
+    static String[] isInputString =
+    {
+        "",
+        "\n Your Choice: "
+    };
+
     /**
      * Prints out an array of strings.
-     * @param stringArray
+     * @param stringArray The string array to print.
+     * @param isInput Whether more lines should be printed to indicate an input is needed.
      * @remarks Clears the terminal before printing.
      */
-    static void printLines(String[] stringArray)
+    static void printLines(String[] stringArray, boolean isInput)
     {
+        // Clear the terminal
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+
+        // Now print the strings
         for (String string : stringArray)
         {
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
+
             System.out.println(string);
+        }
+
+        if (isInput)
+        {
+            for (String string : isInputString)
+            {
+                System.out.println(string);
+            }
         }
     }
 }
