@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import Errors.InvalidIdentifierError;
+import Errors.InvalidStateError;
 
 /**
  * FILE:        MissionController.java
@@ -71,7 +72,28 @@ public class MissionController
         scanner.close();
 
         // We have the input, now we verify it
+        switch (this.currentMenu) {
+            case MainMenu:
+                this.mainMenu(input);
+                break;
 
+            case MissionMenu:
+                this.missionMenu(input);
+                break;
+        
+            default:
+                throw new InvalidStateError("Current menu isn't defined.");
+        }
+    }
+
+    public void mainMenu(String choice)
+    {
+
+    }
+
+    public void missionMenu(String choice)
+    {
+        
     }
 }
 
