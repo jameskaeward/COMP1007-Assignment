@@ -18,7 +18,8 @@ public class MissionController
     private Mission currentMission;
     private Mission[] missions;
 
-    private String[] currentMenu;
+    private String[] currentMenuArray;
+    private Menu.Types currentMenu;
     private boolean menuActive;
 
     // For staging a mission
@@ -27,7 +28,7 @@ public class MissionController
     // Constructor contains build events
     public MissionController()
     {
-        showMenu(Menus.Types.MainMenu);
+        showMenu(Menu.Types.MainMenu);
     }
 
     public void viewMission(int missionIndex)
@@ -38,16 +39,16 @@ public class MissionController
     /**
      * Shows a menu to the user.
      */
-    public void showMenu(Menus.Types menuId)
+    public void showMenu(Menu.Types menuId)
     {
         this.menuActive = true;
         switch (menuId) {
             case MainMenu:
-                this.currentMenu = Menus.MAIN_MENU;
+                this.currentMenuArray = Menu.MAIN_MENU;
                 break;
         
             case MissionMenu:
-                this.currentMenu = Menus.MISSION_MENU;
+                this.currentMenuArray = Menu.MISSION_MENU;
                 break;
 
             default:
@@ -59,7 +60,7 @@ public class MissionController
 
     public void showCurrentMenu()
     {
-        Utility.printLines(this.currentMenu);
+        Utility.printLines(this.currentMenuArray);
     }
 }
 

@@ -13,7 +13,7 @@
  * <p>
  * @author      Rungpipol Kaew-ard
  */
-public interface Menus
+public interface Menu
 {
 
     public enum Types
