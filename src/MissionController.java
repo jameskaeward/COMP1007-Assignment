@@ -18,6 +18,8 @@ import Errors.InvalidStateError;
  */
 public class MissionController
 {
+    private Scanner scanner;
+
     private Mission currentMission;
     private Mission[] missions;
 
@@ -31,6 +33,10 @@ public class MissionController
     // Constructor contains build events
     public MissionController()
     {
+        // Initiliase the scanner
+        this.scanner = new Scanner(System.in);
+
+        // The menu loop
         showMenu(Menu.Types.MainMenu);
     }
 
@@ -67,9 +73,7 @@ public class MissionController
         Utility.printLines(this.currentMenuArray, true, true);
 
         // Get the input
-        Scanner scanner = new Scanner(System.in);
         String input = scanner.next();
-        scanner.close();
 
         // We have the input, now we verify it
         try {
@@ -90,7 +94,6 @@ public class MissionController
             // Reset the menu if there was an error
             this.showError();
         }
-
     }
 
     public void showError()
