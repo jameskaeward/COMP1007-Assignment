@@ -64,7 +64,7 @@ public class MissionController
     public void showCurrentMenu()
     {
         // Print the menu
-        Utility.printLines(this.currentMenuArray, true);
+        Utility.printLines(this.currentMenuArray, true, true);
 
         // Get the input
         Scanner scanner = new Scanner(System.in);
@@ -72,18 +72,31 @@ public class MissionController
         scanner.close();
 
         // We have the input, now we verify it
-        switch (this.currentMenu) {
-            case MainMenu:
-                this.mainMenu(input);
-                break;
+        try {
+            switch (this.currentMenu) {
+                case MainMenu:
+                    throw new Exception("test");
+                    // this.mainMenu(input);
+                    // break;
 
-            case MissionMenu:
-                this.missionMenu(input);
-                break;
-        
-            default:
-                throw new InvalidStateError("Current menu isn't defined.");
+                case MissionMenu:
+                    this.missionMenu(input);
+                    break;
+            
+                default:
+                    throw new InvalidStateError("Current menu isn't defined.");
+            }
+        } catch (Exception e) {
+            // Reset the menu if there was an error
+            this.showError();
         }
+
+    }
+
+    public void showError()
+    {
+        Utility.printLines(Menu.ERROR_NOTIFICATION, false, false);
+        this.showCurrentMenu();
     }
 
     public void mainMenu(String choice)
@@ -93,7 +106,7 @@ public class MissionController
 
     public void missionMenu(String choice)
     {
-        
+
     }
 }
 

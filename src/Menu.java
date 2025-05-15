@@ -47,4 +47,9 @@ public interface Menu
         "=============================================",
         "All missions are listed below"
     };
+
+    static String[] ERROR_NOTIFICATION =
+    {
+        "Please input a number."
+    };
 }
