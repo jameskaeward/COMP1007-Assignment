@@ -47,7 +47,7 @@ public interface Utility
         {
             for (String string : isInputString)
             {
-                System.out.println(string);
+                System.out.print(string);
             }
         }
     }
