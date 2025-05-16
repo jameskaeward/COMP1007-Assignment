@@ -29,6 +29,23 @@ public interface Menu
         AstronautList
     }
 
+    public static String[] getMenu(Types menuId)
+    {
+        String[] menuArray;
+
+        switch (menuId) {
+            case MissionMenuAll:
+                menuArray = MISSION_MENU;
+
+            // Main Menu is the default case
+            case MainMenu:
+            default:
+                menuArray = MAIN_MENU;
+                break;
+        }
+        return menuArray;
+    }
+
     static String[] MAIN_MENU =
     {
         "=============================================",

@@ -23,7 +23,6 @@ public class MissionController
     private Mission currentMission;
     private Mission[] missions;
 
-    private String[] currentMenuArray;
     private Menu.Types currentMenu;
     private boolean menuActive;
 
@@ -56,28 +55,17 @@ public class MissionController
     /**
      * Shows a menu to the user.
      */
-    public void setMenu(Menu.Types menuId)
+    private void setMenu(Menu.Types menuId)
     {
         this.menuActive = true;
         this.currentMenu = menuId;
-        switch (menuId) {
-            case MainMenu:
-                this.currentMenuArray = Menu.MAIN_MENU;
-                break;
-        
-            case MissionMenuAll:
-                this.currentMenuArray = Menu.MISSION_MENU;
-                break;
-
-            default:
-                throw new InvalidIdentifierError("Invalid menu id, or no id specified.");
-        }
     }
 
     public void showCurrentMenu()
     {
         // Print the menu
-        Utility.printLines(this.currentMenuArray, true, true);
+        String[] menuStrings = Menu.getMenu(this.currentMenu);
+        Utility.printLines(menuStrings, true, true);
 
         // Get the input
         String input = scanner.next();
