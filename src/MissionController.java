@@ -120,23 +120,23 @@ public class MissionController
                 break;
 
             case 4:
-                this.setMenu(Menu.Types.MissionMenuUnmanned);
+                this.setMenu(Menu.Types.MissionSeeAstronauts);
                 break;
 
             case 5:
-                this.setMenu(Menu.Types.MissionMenuUnmanned);
+                this.setMenu(Menu.Types.MissionAdd);
                 break;
 
             case 6:
-                this.setMenu(Menu.Types.MissionMenuUnmanned);
+                this.setMenu(Menu.Types.MissionEdit);
                 break;
 
             case 7:
-                this.setMenu(Menu.Types.MissionMenuUnmanned);
+                this.setMenu(Menu.Types.MissionSummary);
                 break;
 
             case 8:
-                this.setMenu(Menu.Types.MissionMenuUnmanned);
+                this.setMenu(Menu.Types.AstronautList);
                 break;
 
             case 9:
