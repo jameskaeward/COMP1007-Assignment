@@ -1,15 +1,15 @@
 /**
- * FILE:        Menus.java
+ * FILE:        Menu.java
  * <p>
  * UNIT:        COMP1007
  * <p>
  * REFERENCE:   https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html
  * <p>
- * COMMENTS:    A bit like a bookshelf.
+ * COMMENTS:    Contains all the menus, and gets them for you.
  * <p>
  * REQUIRES:    None.
  * <p>
- * Last Mod:    15th April 2025
+ * Last Mod:    16th May 2025
  * <p>
  * @author      Rungpipol Kaew-ard
  */
@@ -35,7 +35,16 @@ public interface Menu
 
         switch (menuId) {
             case MissionMenuAll:
-                menuArray = MISSION_MENU;
+                menuArray = Utility.combineStrings(MISSION_MENU, MISSION_ALL);
+                break;
+
+            case MissionMenuManned:
+                menuArray = Utility.combineStrings(MISSION_MENU, MISSION_MANNED);
+                break;
+
+            case MissionMenuUnmanned:
+                menuArray = Utility.combineStrings(MISSION_MENU, MISSION_UNMANNED);
+                break;
 
             // Main Menu is the default case
             case MainMenu:

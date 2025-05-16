@@ -11,7 +11,7 @@ import Errors.InvalidStateError;
  * <p>
  * REQUIRES:    None.
  * <p>
- * Last Mod:    15th May 2025
+ * Last Mod:    16th May 2025
  * <p>
  * @author      Rungpipol Kaew-ard
  */
@@ -58,10 +58,17 @@ public class MissionController
     {
         this.menuActive = true;
         this.currentMenu = menuId;
+
+        // Debug
+        // System.err.println(menuId.toString());
     }
 
     public void showCurrentMenu()
     {
+
+        // Debug
+        // System.err.println(this.currentMenu.toString());
+
         // Print the menu
         String[] menuStrings = Menu.getMenu(this.currentMenu);
         Utility.printLines(menuStrings, true, true);
@@ -95,6 +102,10 @@ public class MissionController
         this.showCurrentMenu();
     }
 
+    /**
+     * Main menu handler.
+     * @param choice
+     */
     public void mainMenu(String choice)
     {
         int choiceIndex;
@@ -108,7 +119,6 @@ public class MissionController
         switch (choiceIndex) {
             case 1:
                 this.setMenu(Menu.Types.MissionMenuAll);
-                this.showCurrentMenu();
                 break;
         
             case 2:
@@ -140,11 +150,14 @@ public class MissionController
                 break;
 
             case 9:
+                this.menuActive = false;
                 this.exit();
+                break;
 
             default:
                 break;
         }
+        if (menuActive) this.showCurrentMenu(); // So it doesn't show a menu on exit
     }
 
     public void missionMenu(String choice, Filter filter)
