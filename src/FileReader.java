@@ -33,14 +33,18 @@ public class FileReader
             input = new FileInputStream(fileName);
             reader = new InputStreamReader(input);
             bufferedReader = new BufferedReader(reader);
-            lineIndex = 0;
+            // lineIndex = 0;
             line = bufferedReader.readLine();
             while (line != null)
             {
-                lineIndex++;
+                // lineIndex++;
                 // Create the new array and it adds to the file bit by bit
                 String[] newLine = {line};
-                Utility.combineStrings(file, newLine);
+                // System.out.println(line);
+                file = Utility.combineStrings(file, newLine);
+
+                // Go to next line
+                line = bufferedReader.readLine();
             }
             // Close the stream at the end
             input.close();
