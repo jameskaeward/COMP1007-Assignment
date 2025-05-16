@@ -69,6 +69,11 @@ public class MissionController
         // System.err.println(menuId.toString());
     }
 
+    /**
+     * Extracts infomation from a mission array
+     * @param missions The missions to extract from
+     * @return A string array with mission data formatted as "x) CODE NAME"
+     */
     private String[] getMissionInfo(Mission[] missions)
     {
         int index = 0;
@@ -99,6 +104,11 @@ public class MissionController
         String[] menuStrings = Menu.getMenu(this.currentMenu);
 
         // Get the menu info too
+        if (this.currentMenu == Menu.Types.MissionMenuAll)
+        {
+            String[] info = getMissionInfo(this.missions);
+            menuStrings = Utility.combineStrings(menuStrings, info);
+        }
 
         Utility.printLines(menuStrings, true, true);
 
