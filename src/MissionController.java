@@ -173,9 +173,9 @@ public class MissionController
 
     public void exit()
     {
+        scanner.close();
         String[] exit = {"Bye."};
         Utility.printLines(exit, true, false);
-        scanner.close();
     }
 }
 
