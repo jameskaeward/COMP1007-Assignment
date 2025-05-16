@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Scanner;
 
 import Errors.InvalidStateError;
@@ -28,6 +29,10 @@ public class MissionController
     // For staging a mission
     private Astronaut[] astronautsToAdd;
 
+    // The file reader
+    // This isn't neccessary, but it could be used if we wanted to read more files.
+    private FileReader reader;
+
     enum Filter
     {
         AllMissions,
@@ -40,6 +45,8 @@ public class MissionController
     {
         // Initiliase the scanner
         this.scanner = new Scanner(System.in);
+
+
 
         // The menu loop
         this.setMenu(Menu.Types.MainMenu);
