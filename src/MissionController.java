@@ -46,7 +46,8 @@ public class MissionController
         // Initiliase the scanner
         this.scanner = new Scanner(System.in);
 
-        FileReader.readFile(inputFilePath);
+        String[] file = FileReader.readFile(inputFilePath);
+        Utility.printLines(file, false, false);
 
         // The menu loop
         this.setMenu(Menu.Types.MainMenu);
