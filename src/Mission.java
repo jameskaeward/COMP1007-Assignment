@@ -75,6 +75,12 @@ public class Mission
         this.isManned = mannedMission;
     }
 
+    public String toString()
+    {
+        String string = this.missionCode + " " + this.missionName;
+        return string;
+    }
+
     public void setMissionCode(String newMissionCode)
     {
         if (newMissionCode == "")

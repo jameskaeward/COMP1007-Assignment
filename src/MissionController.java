@@ -19,7 +19,7 @@ public class MissionController
 {
     private Scanner scanner;
 
-    private Mission currentMission;
+    private int currentMission;
     private Mission[] missions;
 
     private Menu.Types currentMenu;
@@ -46,9 +46,15 @@ public class MissionController
         this.showCurrentMenu();
     }
 
-    public void viewMission(int missionIndex)
+    /**
+     * Gets the mission the controller currently is scoped on.
+     * @return The current mission.
+     */
+    @SuppressWarnings("unused")
+    private Mission getCurrentMission()
     {
-        this.currentMission = missions[missionIndex];
+        Mission mission = missions[this.currentMission];
+        return mission;
     }
 
     /**
@@ -162,7 +168,7 @@ public class MissionController
 
     public void missionMenu(String choice, Filter filter)
     {
-
+        
     }
 
     public void exit()

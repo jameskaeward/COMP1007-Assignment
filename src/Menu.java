@@ -46,6 +46,8 @@ public interface Menu
                 menuArray = Utility.combineStrings(MISSION_MENU, MISSION_UNMANNED);
                 break;
 
+            // case AstronautList:
+
             // Main Menu is the default case
             case MainMenu:
             default:
@@ -55,10 +57,22 @@ public interface Menu
         return menuArray;
     }
 
+    static String[] ASTRONAUT_VIEW =
+    {
+        "=============================================",
+        "               Astronaut View",
+        "============================================="
+    };
+
+    static String[] ASTRONAUT_NATIONALITIES =
+    {
+        "Astronauts for the chosen nationality are shown below."
+    };
+
     static String[] MAIN_MENU =
     {
         "=============================================",
-        "Welcome to Mission Command and Control",
+        "   Welcome to Mission Command and Control",
         "=============================================",
         "Your options for this system are listed below",
         "",
