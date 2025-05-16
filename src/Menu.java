@@ -19,7 +19,14 @@ public interface Menu
     public enum Types
     {
         MainMenu,
-        MissionMenu,
+        MissionMenuAll,
+        MissionMenuManned,
+        MissionMenuUnmanned,
+        MissionSeeAstronauts,
+        MissionAdd,
+        MissionEdit,
+        MissionSummary,
+        AstronautList
     }
 
     static String[] MAIN_MENU =
@@ -44,8 +51,22 @@ public interface Menu
     {
         "=============================================",
         "               Mission View",
-        "=============================================",
+        "============================================="
+    };
+
+    static String[] MISSION_ALL =
+    {
         "All missions are listed below"
+    };
+
+    static String[] MISSION_MANNED =
+    {
+        "All manned missions are listed below"
+    };
+
+    static String[] MISSION_UNMANNED =
+    {
+        "All unmanned missions are listed below"
     };
 
     static String[] ERROR_NOTIFICATION =

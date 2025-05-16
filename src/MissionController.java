@@ -30,6 +30,13 @@ public class MissionController
     // For staging a mission
     private Astronaut[] astronautsToAdd;
 
+    enum Filter
+    {
+        AllMissions,
+        MannedMissions,
+        UnmannedMissiions
+    }
+
     // Constructor contains build events
     public MissionController()
     {
@@ -37,7 +44,8 @@ public class MissionController
         this.scanner = new Scanner(System.in);
 
         // The menu loop
-        showMenu(Menu.Types.MainMenu);
+        this.setMenu(Menu.Types.MainMenu);
+        this.showCurrentMenu();
     }
 
     public void viewMission(int missionIndex)
@@ -48,7 +56,7 @@ public class MissionController
     /**
      * Shows a menu to the user.
      */
-    public void showMenu(Menu.Types menuId)
+    public void setMenu(Menu.Types menuId)
     {
         this.menuActive = true;
         switch (menuId) {
@@ -56,15 +64,13 @@ public class MissionController
                 this.currentMenuArray = Menu.MAIN_MENU;
                 break;
         
-            case MissionMenu:
+            case MissionMenuAll:
                 this.currentMenuArray = Menu.MISSION_MENU;
                 break;
 
             default:
                 throw new InvalidIdentifierError("Invalid menu id, or no id specified.");
         }
-
-        this.showCurrentMenu();
     }
 
     public void showCurrentMenu()
@@ -79,12 +85,11 @@ public class MissionController
         try {
             switch (this.currentMenu) {
                 case MainMenu:
-                    throw new Exception("test");
-                    // this.mainMenu(input);
-                    // break;
+                    this.mainMenu(input);
+                    break;
 
-                case MissionMenu:
-                    this.missionMenu(input);
+                case MissionMenuAll:
+                    this.missionMenu(input, Filter.AllMissions);
                     break;
             
                 default:
@@ -104,10 +109,16 @@ public class MissionController
 
     public void mainMenu(String choice)
     {
-
+        int choiceIndex;
+        try {
+            choiceIndex = Integer.parseInt(choice);
+        } catch (Exception e) {
+            // Rethrow any errors
+            throw e;
+        }
     }
 
-    public void missionMenu(String choice)
+    public void missionMenu(String choice, Filter filter)
     {
 
     }
