@@ -69,6 +69,26 @@ public class MissionController
         // System.err.println(menuId.toString());
     }
 
+    private String[] getMissionInfo(Mission[] missions)
+    {
+        int index = 0;
+        String[] infoArray = new String[missions.length];
+
+        for (Mission mission : missions) {
+            // Get the mission info and combine it with a prefix
+            String missionInfoPart = mission.toString();
+            int counter = (index + 1);
+            String prefix = Integer.toString(counter) + ") ";
+            String fullString = prefix + missionInfoPart;
+
+            // Now put that into the array
+            String[] missionInfo = { fullString };
+
+            infoArray = Utility.combineStrings(infoArray, missionInfo);
+        }
+        return infoArray;
+    }
+
     public void showCurrentMenu()
     {
 
@@ -77,6 +97,9 @@ public class MissionController
 
         // Print the menu
         String[] menuStrings = Menu.getMenu(this.currentMenu);
+
+        // Get the menu info too
+
         Utility.printLines(menuStrings, true, true);
 
         // Get the input
