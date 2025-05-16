@@ -59,6 +59,7 @@ public class MissionController
     public void setMenu(Menu.Types menuId)
     {
         this.menuActive = true;
+        this.currentMenu = menuId;
         switch (menuId) {
             case MainMenu:
                 this.currentMenuArray = Menu.MAIN_MENU;
@@ -116,11 +117,58 @@ public class MissionController
             // Rethrow any errors
             throw e;
         }
+
+        switch (choiceIndex) {
+            case 1:
+                this.setMenu(Menu.Types.MissionMenuAll);
+                this.showCurrentMenu();
+                break;
+        
+            case 2:
+                this.setMenu(Menu.Types.MissionMenuManned);
+                break;
+
+            case 3:
+                this.setMenu(Menu.Types.MissionMenuUnmanned);
+                break;
+
+            case 4:
+                this.setMenu(Menu.Types.MissionMenuUnmanned);
+                break;
+
+            case 5:
+                this.setMenu(Menu.Types.MissionMenuUnmanned);
+                break;
+
+            case 6:
+                this.setMenu(Menu.Types.MissionMenuUnmanned);
+                break;
+
+            case 7:
+                this.setMenu(Menu.Types.MissionMenuUnmanned);
+                break;
+
+            case 8:
+                this.setMenu(Menu.Types.MissionMenuUnmanned);
+                break;
+
+            case 9:
+                this.exit();
+
+            default:
+                break;
+        }
     }
 
     public void missionMenu(String choice, Filter filter)
     {
 
+    }
+
+    public void exit()
+    {
+        String[] exit = {"Bye."};
+        Utility.printLines(exit, true, false);
     }
 }
 
