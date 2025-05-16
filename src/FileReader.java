@@ -20,7 +20,7 @@ public class FileReader
      * @param fileName The name of the file.
      * @return The file's text as a string array.
      */
-    public String[] readFile(String fileName)
+    public static String[] readFile(String fileName)
     {
         FileInputStream input = null;
         InputStreamReader reader;
