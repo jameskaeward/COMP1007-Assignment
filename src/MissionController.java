@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-import Errors.InvalidIdentifierError;
 import Errors.InvalidStateError;
 
 /**
@@ -157,6 +156,7 @@ public class MissionController
     {
         String[] exit = {"Bye."};
         Utility.printLines(exit, true, false);
+        scanner.close();
     }
 }
 
