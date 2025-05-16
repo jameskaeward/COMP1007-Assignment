@@ -28,13 +28,13 @@ public interface Utility
         String[] newArray = new String[combinedLength];
 
         int index = 0; // For the loop
-        for (String _ : array1) {
+        for (String _String : array1) {
             newArray[index] = array1[index];
             index++;
         }
 
         int array2Index = 0;
-        for (String _ : array2) {
+        for (String _String : array2) {
             newArray[index] = array2[array2Index];
             index++;
             array2Index++;

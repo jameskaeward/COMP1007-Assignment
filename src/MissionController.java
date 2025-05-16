@@ -41,12 +41,12 @@ public class MissionController
     }
 
     // Constructor contains build events
-    public MissionController()
+    public MissionController(String inputFilePath)
     {
         // Initiliase the scanner
         this.scanner = new Scanner(System.in);
 
-
+        FileReader.readFile(inputFilePath);
 
         // The menu loop
         this.setMenu(Menu.Types.MainMenu);
