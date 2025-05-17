@@ -64,13 +64,15 @@ public class MissionController
         }
 
         // Testing if missions are read
-        for (Mission mission : this.missions) {
-            System.out.println(mission.getMissionName());
-        }
+        // for (Mission mission : this.missions) {
+        //     System.out.println(mission.getMissionName());
+        // }
         // file[1] = "testing!!!";
         // FileReadWrite.writeFile(this.dataFilePath, file);
 
         // Utility.printLines(file, false, false);
+
+        
 
         // The menu loop
         this.setMenu(Menu.Types.MainMenu);

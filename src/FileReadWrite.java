@@ -177,7 +177,7 @@ public class FileReadWrite
             for (String astronautString : astronautsString)
             {
                 // Testing
-                System.out.println(astronautString);
+                // System.out.println(astronautString);
 
                 Astronaut astronaut = parseAstronaut(astronautString);
                 astronauts[index] = astronaut;
