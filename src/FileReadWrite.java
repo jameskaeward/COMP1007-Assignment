@@ -113,8 +113,10 @@ public class FileReadWrite
         String astronautData = null;
 
         // Not having astronauts will mean the array is only 6 long
+        boolean hasAstronauts = false; // This is a double check on isManned
         if (missionParts.length >= 7)
         {
+            hasAstronauts = true;
             astronautData = missionParts[6];
         }
 
@@ -122,23 +124,28 @@ public class FileReadWrite
         int successRate = Integer.parseInt(successRateString);
         // boolean isManned = Boolean.getBoolean(isMannedString);
         boolean isManned;
-        if (isMannedString == "true")
+        if (isMannedString == "true" && hasAstronauts)
         {
             isManned = true;
         }
-        else if (isMannedString == "false")
+        else if (isMannedString == "false" && !hasAstronauts)
         {
             isManned = false;
         }
         else
         {
+            // This will be thrown if isManned isn't defined
+            // But it will also be thrown if there are astronauts, but isManned is false (and vice versa)
             throw new BadFileDataError("isManned is not defined correctly.");
         }
 
 
         Mission mission = new Mission(missionName, missionCode, destination, missionYear, successRate, isManned);
 
-        // Must also add astronauts!!!
+        if (isManned)
+        {
+            mission.addAstronaut(null);
+        }
 
         return mission;
     }

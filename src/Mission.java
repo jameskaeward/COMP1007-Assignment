@@ -1,5 +1,6 @@
 import Errors.EmptyNameError;
 import Errors.NumberOutOfRangeError;
+import Errors.TooManyAstronautsError;
 
 /**
  * FILE:        Mission.java
@@ -121,11 +122,17 @@ public class Mission
      * Adds an astronaut to a mission.
      * @param newAstronaut The new astronaut.
      */
-    public void addAstronaut(Astronaut newAstronaut)
+    public void addAstronaut(Astronaut newAstronaut) throws TooManyAstronautsError
     {
         // See how many astronauts we have
         Astronaut[] currentAstronauts = this.astronauts;
         int numberAstronauts = currentAstronauts.length;
+
+        // We cannot have more than 5 astronauts
+        if ((numberAstronauts + 1) <= 5)
+        {
+            throw new TooManyAstronautsError("More than 5 astronauts are being added to mission " + this.missionName);
+        }
 
         Astronaut[] updatedAstronauts = new Astronaut[numberAstronauts + 1];
 
