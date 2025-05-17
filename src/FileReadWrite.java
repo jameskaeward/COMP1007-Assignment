@@ -18,7 +18,7 @@ import Errors.BadFileDataError;
  * <p>
  * Last Mod:    16th May 2025
  */
-public class FileReader
+public class FileReadWrite
 {
     /**
      * Reads a text file.

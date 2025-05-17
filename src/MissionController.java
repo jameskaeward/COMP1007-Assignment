@@ -31,7 +31,7 @@ public class MissionController
 
     // The file reader
     // This isn't neccessary, but it could be used if we wanted to read more files.
-    private FileReader reader;
+    private FileReadWrite reader;
     private String dataFilePath;
 
     enum Filter
@@ -50,10 +50,10 @@ public class MissionController
         // Set the data file path
         this.dataFilePath = inputFilePath;
 
-        String[] file = FileReader.readFile(this.dataFilePath);
+        String[] file = FileReadWrite.readFile(this.dataFilePath);
 
         file[1] = "testing!!!";
-        FileReader.writeFile(this.dataFilePath, file);
+        FileReadWrite.writeFile(this.dataFilePath, file);
 
         Utility.printLines(file, false, false);
 
