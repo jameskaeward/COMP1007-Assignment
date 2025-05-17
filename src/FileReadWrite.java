@@ -142,9 +142,13 @@ public class FileReadWrite
 
         Mission mission = new Mission(missionName, missionCode, destination, missionYear, successRate, isManned);
 
+        // We add the astronauts if nothing is wrong
         if (isManned)
         {
-            mission.addAstronaut(null);
+            Astronaut[] astronauts = parseAstronauts(astronautData);
+            for (Astronaut astronaut : astronauts) {
+                mission.addAstronaut(astronaut);
+            }
         }
 
         return mission;
