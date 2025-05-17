@@ -77,6 +77,7 @@ public class Mission
 
         // It will create the astronaut as an empty array
         Astronaut[] astronauts = {};
+        // System.out.println("Length: " + astronauts.length);
         this.astronauts = astronauts;
     }
 
@@ -131,18 +132,19 @@ public class Mission
         // See how many astronauts we have
         Astronaut[] currentAstronauts = this.astronauts;
         int numberAstronauts = currentAstronauts.length;
+        int newNumberAstronauts = numberAstronauts + 1;
 
         // We cannot have more than 5 astronauts
-        if ((numberAstronauts + 1) <= 5)
+        if ((newNumberAstronauts) >= 5)
         {
             throw new TooManyAstronautsError("More than 5 astronauts are being added to mission " + this.missionName);
         }
 
-        Astronaut[] updatedAstronauts = new Astronaut[numberAstronauts + 1];
+        Astronaut[] updatedAstronauts = new Astronaut[newNumberAstronauts];
 
         // Makes a new array and adds the new astronaut to it
         updatedAstronauts = copyAstronauts(currentAstronauts, updatedAstronauts);
-        updatedAstronauts[numberAstronauts + 1] = newAstronaut;
+        updatedAstronauts[numberAstronauts] = newAstronaut; // The index starts at 0, so use number of astronauts
         this.astronauts = updatedAstronauts;
     }
 

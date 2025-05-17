@@ -50,10 +50,14 @@ public class MissionController
         // Set the data file path
         this.dataFilePath = inputFilePath;
 
+        // First initiliase missions as empty array
+        Mission[] missions = {};
+        this.missions = missions;
+
         // Reading the mission data
         String[] missionsData = FileReadWrite.readFile(this.dataFilePath);
         int numberMissions = missionsData.length;
-        for (int i = 1; i <= numberMissions; i++) // Starting at 1 to exlude header
+        for (int i = 1; i < numberMissions; i++) // Starting at 1 to exlude header
         {
             Mission mission = FileReadWrite.parseMission(missionsData[i]);
             this.addMission(mission);
@@ -86,7 +90,7 @@ public class MissionController
         newMissions = Utility.copyMissions(this.missions, newMissions);
 
         // Now add the new mission at the end
-        newMissions[missionsNumber + 1] = mission;
+        newMissions[missionsNumber] = mission;
 
         // Set it to the controller's array
         this.missions = newMissions;
