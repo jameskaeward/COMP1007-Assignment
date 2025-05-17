@@ -48,6 +48,25 @@ public interface Utility
     };
 
     /**
+     * Copies missions from one array to another.
+     * @param array1 The array to copy from.
+     * @param array2 The array to copy to.
+     * @return array2 with information from array1
+     * @remarks array2 must have a greater index than array1.
+     * @remarks This doesn't check for array length, nor mutate them.
+     */
+    public static Mission[] copyMissions(Mission[] array1, Mission[] array2)
+    {
+        int index = 0;
+        for (Mission mission : array1)
+        {
+            array2[index] = array1[index];
+            index++;
+        }
+        return array2;
+    }
+
+    /**
      * Prints out an array of strings.
      * @param stringArray The string array to print.
      * @param isInput Whether more lines should be printed to indicate an input is needed.

@@ -63,6 +63,25 @@ public class MissionController
     }
 
     /**
+     * Adds a mission to the controller.
+     * @param mission The mission.
+     */
+    public void addMission(Mission mission)
+    {
+        int missionsNumber = this.missions.length;
+        Mission[] newMissions = new Mission[missionsNumber + 1];
+
+        // Copy the mission info
+        newMissions = Utility.copyMissions(this.missions, newMissions);
+
+        // Now add the new mission at the end
+        newMissions[missionsNumber + 1] = mission;
+
+        // Set it to the controller's array
+        this.missions = newMissions;
+    }
+
+    /**
      * Gets the mission the controller currently is scoped on.
      * @return The current mission.
      */

@@ -87,7 +87,7 @@ public class FileReadWrite
 
     /**
      * Parses a csv line into a mission
-     * @param missionString
+     * @param missionString The string representation of a mission.
      * @return The mission object the string represented.
      */
     public static Mission parseMission(String missionString) throws BadFileDataError, NumberFormatException
