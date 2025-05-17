@@ -142,4 +142,42 @@ public class FileReadWrite
 
         return mission;
     }
+
+    public static Astronaut[] parseAstronauts(String astronautData)
+    {
+        // Astronauts are separated by a pipe |
+        String[] astronautsString = astronautData.split("|");
+        // We make an array which'll contain the astronauts
+        Astronaut[] astronauts = new Astronaut[astronautsString.length];
+
+        // Now get each astronaut
+        int index = 0;
+        for (String astronautString : astronautsString)
+        {
+            Astronaut astronaut = parseAstronaut(astronautString);
+            astronauts[index] = astronaut;
+            index++;
+        }
+        return astronauts;
+    }
+
+    /**
+     * Parses a single astronaut.
+     * @param astronautString The astronaut's string representation.
+     * @return The astronaut as an object.
+     * @throws NumberFormatException
+     */
+    public static Astronaut parseAstronaut(String astronautString) throws NumberFormatException
+    {
+        // Example data:  Kofi Mensah:Engineer:40:Ghana
+        // Name : Rank : Nationality
+        String[] astronautParts = astronautString.split(":");
+        String name = astronautParts[0];
+        String rank = astronautParts[1];
+        int age = Integer.parseInt(astronautParts[2]);
+        String nationality = astronautParts[3];
+
+        Astronaut astronaut = new Astronaut(name, age, rank, nationality);
+        return astronaut;
+    }
 }
