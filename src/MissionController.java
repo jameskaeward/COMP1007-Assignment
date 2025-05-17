@@ -32,6 +32,7 @@ public class MissionController
     // The file reader
     // This isn't neccessary, but it could be used if we wanted to read more files.
     private FileReader reader;
+    private String inputFilePath;
 
     enum Filter
     {
@@ -45,6 +46,9 @@ public class MissionController
     {
         // Initiliase the scanner
         this.scanner = new Scanner(System.in);
+
+        // Set the data file path
+        this.inputFilePath = inputFilePath;
 
         String[] file = FileReader.readFile(inputFilePath);
         Utility.printLines(file, false, false);
