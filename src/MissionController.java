@@ -50,12 +50,23 @@ public class MissionController
         // Set the data file path
         this.dataFilePath = inputFilePath;
 
-        String[] file = FileReadWrite.readFile(this.dataFilePath);
+        // Reading the mission data
+        String[] missionsData = FileReadWrite.readFile(this.dataFilePath);
+        int numberMissions = missionsData.length;
+        for (int i = 1; i <= numberMissions; i++) // Starting at 1 to exlude header
+        {
+            Mission mission = FileReadWrite.parseMission(missionsData[i]);
+            this.addMission(mission);
+        }
 
-        file[1] = "testing!!!";
-        FileReadWrite.writeFile(this.dataFilePath, file);
+        // Testing if missions are read
+        for (Mission mission : this.missions) {
+            System.out.println(mission.getMissionName());
+        }
+        // file[1] = "testing!!!";
+        // FileReadWrite.writeFile(this.dataFilePath, file);
 
-        Utility.printLines(file, false, false);
+        // Utility.printLines(file, false, false);
 
         // The menu loop
         this.setMenu(Menu.Types.MainMenu);

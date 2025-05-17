@@ -24,6 +24,7 @@ public class FileReadWrite
      * Reads a text file.
      * @param fileName The name of the file.
      * @return The file's text as a string array.
+     * @remarks Each new line represents an array element.
      */
     public static String[] readFile(String fileName)
     {
