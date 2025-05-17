@@ -143,18 +143,26 @@ public class FileReadWrite
         Mission mission = new Mission(missionName, missionCode, destination, missionYear, successRate, isManned);
 
         // We add the astronauts if nothing is wrong
-        if (isManned)
+        try
         {
-            Astronaut[] astronauts = parseAstronauts(astronautData);
-            for (Astronaut astronaut : astronauts) {
-                mission.addAstronaut(astronaut);
+            if (isManned)
+            {
+                Astronaut[] astronauts = parseAstronauts(astronautData);
+                for (Astronaut astronaut : astronauts) {
+                    mission.addAstronaut(astronaut);
+                }
             }
         }
+        catch (NumberFormatException e)
+        {
+            throw e;
+        }
+        
 
         return mission;
     }
 
-    public static Astronaut[] parseAstronauts(String astronautData)
+    public static Astronaut[] parseAstronauts(String astronautData) throws NumberFormatException
     {
         // Astronauts are separated by a pipe |
         String[] astronautsString = astronautData.split("|");
@@ -163,12 +171,21 @@ public class FileReadWrite
 
         // Now get each astronaut
         int index = 0;
-        for (String astronautString : astronautsString)
+        try
         {
-            Astronaut astronaut = parseAstronaut(astronautString);
-            astronauts[index] = astronaut;
-            index++;
+            for (String astronautString : astronautsString)
+            {
+                Astronaut astronaut = parseAstronaut(astronautString);
+                astronauts[index] = astronaut;
+                index++;
+            }
         }
+        catch (NumberFormatException e)
+        {
+            // Rethrow the error
+            throw e;
+        }
+        
         return astronauts;
     }
 
