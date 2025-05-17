@@ -122,22 +122,21 @@ public class FileReadWrite
         }
 
         int missionYear = Integer.parseInt(yearString);
-        int successRate = Integer.parseInt(successRateString);
+        double successRate = Double.parseDouble(successRateString);
         // boolean isManned = Boolean.getBoolean(isMannedString);
-        boolean isManned;
-        if (isMannedString == "true" && hasAstronauts)
+        boolean isManned = Boolean.parseBoolean(isMannedString);
+        
+        // else
+        // {
+        //     // This will be thrown if isManned isn't defined
+        //     System.err.println("isMannedString error:  " + isMannedString);
+        //     throw new BadFileDataError("isManned is not defined correctly.");
+        // }
+
+        // This will be thrown if there are astronauts, but isManned is false (and vice versa)
+        if (isManned != hasAstronauts)
         {
-            isManned = true;
-        }
-        else if (isMannedString == "false" && !hasAstronauts)
-        {
-            isManned = false;
-        }
-        else
-        {
-            // This will be thrown if isManned isn't defined
-            // But it will also be thrown if there are astronauts, but isManned is false (and vice versa)
-            throw new BadFileDataError("isManned is not defined correctly.");
+            throw new BadFileDataError("isManned and astronaut data disagree.");
         }
 
 
@@ -165,8 +164,9 @@ public class FileReadWrite
 
     public static Astronaut[] parseAstronauts(String astronautData) throws NumberFormatException
     {
-        // Astronauts are separated by a pipe |
-        String[] astronautsString = astronautData.split("|");
+        // Astronauts are separated by a pipe |, very annoying!
+        // https://stackoverflow.com/questions/18778379/why-does-single-pipe-character-confuse-java-split-method
+        String[] astronautsString = astronautData.split("\\|");
         // We make an array which'll contain the astronauts
         Astronaut[] astronauts = new Astronaut[astronautsString.length];
 
@@ -176,6 +176,9 @@ public class FileReadWrite
         {
             for (String astronautString : astronautsString)
             {
+                // Testing
+                System.out.println(astronautString);
+
                 Astronaut astronaut = parseAstronaut(astronautString);
                 astronauts[index] = astronaut;
                 index++;

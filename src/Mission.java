@@ -21,7 +21,7 @@ public class Mission
     private String missionCode;
     private String destinationPlanet;
     private int launchYear;
-    private int successRate;
+    private double successRate;
     private boolean isManned;
 
     private Astronaut[] astronauts;
@@ -40,7 +40,7 @@ public class Mission
         String code,
         String destinationPlanet,
         int launchYear,
-        int successRate,
+        double successRate,
         boolean mannedMission
         )
     {
@@ -74,6 +74,10 @@ public class Mission
         this.launchYear = launchYear;
         this.successRate = successRate;
         this.isManned = mannedMission;
+
+        // It will create the astronaut as an empty array
+        Astronaut[] astronauts = {};
+        this.astronauts = astronauts;
     }
 
     public String toString()
