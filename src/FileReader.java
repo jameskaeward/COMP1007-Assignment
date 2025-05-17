@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
+import Errors.BadFileDataError;
+
 /**
  * FILE:        FileReader.java
  * <p>
@@ -60,8 +62,8 @@ public class FileReader
     }
 
     /**
-     * Writes a text file.
-     * @param filename The text file name.
+     * Writes into a text file.
+     * @param filename The text file's name.
      * @param input The string array to write to the file.
      * @remarks Each array element represents a single line.
      */
@@ -81,5 +83,63 @@ public class FileReader
         catch (IOException e) {
             System.err.println("File write error: " + e.getMessage());
         }
+    }
+
+    /**
+     * Parses a csv line into a mission
+     * @param missionString
+     * @return The mission object the string represented.
+     */
+    public static Mission parseMission(String missionString) throws BadFileDataError, NumberFormatException
+    {
+        // Example data: Neptune Research,NR104,Neptune,2045,64.5,true,Kofi Mensah:Engineer:40:Ghana
+        // Missionname , Code , Destination , Year , Success Rate , isManned? , Astronauts
+        // This needs to become a mission
+
+        // Split by comma, it's a csv file!
+        String[] missionParts = missionString.split(",");
+
+        if (missionParts.length < 6)
+        {
+            throw new BadFileDataError("Line does not have correct data.");
+        }
+
+        String missionName = missionParts[0];
+        String missionCode = missionParts[1];
+        String destination = missionParts[2];
+        String yearString = missionParts[3];
+        String successRateString = missionParts[4];
+        String isMannedString = missionParts[5];
+        String astronautData = null;
+
+        // Not having astronauts will mean the array is only 6 long
+        if (missionParts.length >= 7)
+        {
+            astronautData = missionParts[6];
+        }
+
+        int missionYear = Integer.parseInt(yearString);
+        int successRate = Integer.parseInt(successRateString);
+        // boolean isManned = Boolean.getBoolean(isMannedString);
+        boolean isManned;
+        if (isMannedString == "true")
+        {
+            isManned = true;
+        }
+        else if (isMannedString == "false")
+        {
+            isManned = false;
+        }
+        else
+        {
+            throw new BadFileDataError("isManned is not defined correctly.");
+        }
+
+
+        Mission mission = new Mission(missionName, missionCode, destination, missionYear, successRate, isManned);
+
+        // Must also add astronauts!!!
+
+        return mission;
     }
 }

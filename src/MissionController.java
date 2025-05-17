@@ -32,7 +32,7 @@ public class MissionController
     // The file reader
     // This isn't neccessary, but it could be used if we wanted to read more files.
     private FileReader reader;
-    private String inputFilePath;
+    private String dataFilePath;
 
     enum Filter
     {
@@ -48,9 +48,13 @@ public class MissionController
         this.scanner = new Scanner(System.in);
 
         // Set the data file path
-        this.inputFilePath = inputFilePath;
+        this.dataFilePath = inputFilePath;
 
-        String[] file = FileReader.readFile(inputFilePath);
+        String[] file = FileReader.readFile(this.dataFilePath);
+
+        file[1] = "testing!!!";
+        FileReader.writeFile(this.dataFilePath, file);
+
         Utility.printLines(file, false, false);
 
         // The menu loop
